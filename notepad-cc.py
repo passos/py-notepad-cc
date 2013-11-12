@@ -34,24 +34,30 @@ if __name__ == '__main__':
     parser.add_option("-k", "--key", dest="key",
             help="http://notepad.cc/KEY", metavar="KEY")
     parser.add_option("-a", "--append", dest="append", action="store_true", 
-            default=False, help="append mode")
+            default=False, help="append to current content instead of replace it")
+    parser.add_option("-q", "--quite", dest="quite", action="store_true", 
+            default=False, help="quite mode, no output")
 
     (options, args) = parser.parse_args()
 
     if not options.key:
-        parser.error("Need specify a key by -k option")
+        print "Error: Need specify a key by -k option\n"
+        parser.print_help()
+        sys.exit(0)
 
     config = NotepadCC(options.key)
 
     current_content = config.get_note()
-    print 'current: ', current_content
 
     if len(args) > 0:
         content = " ".join(args)
         if options.append:
             content = current_content + content
 
-        print 'update: ', content
+        if not options.quite:
+            print 'current: ', current_content
+            print 'update: ', content
+
         config.set_note(content)
     else:
         print current_content
