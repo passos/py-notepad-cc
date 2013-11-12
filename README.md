@@ -10,6 +10,8 @@ A Python script to access http://notepad.cc
     Options:
       -h, --help         show this help message and exit
       -k KEY, --key=KEY  http://notepad.cc/KEY
+      -a, --append       append to current content instead of replace it
+      -q, --quite        quite mode, no output
     
 ## Fetch
 > Fetch the content of http://notepad.cc/ipaddress
@@ -23,5 +25,12 @@ A Python script to access http://notepad.cc
     $ ./notepad-cc.py -k ipaddress 192.168.1.101
     current:  192.168.1.100
     update:  192.168.1.101
+
+## Append
+> Update the content of http://notepad.cc/ipaddress
+
+    $ ./notepad-cc.py -k ipaddress -a -q ' 192.168.1.102'
+    $ ./notepad-cc.py -k ipaddress 
+    192.168.1.101 192.168.1.102
 
 
