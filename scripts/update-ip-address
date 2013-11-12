@@ -1,0 +1,2 @@
+#!/bin/sh
+notepad-cc.py -k ipaddress -q $(ifconfig | grep -o 'inet addr\S*' | cut -d: -f2 | head -1)
