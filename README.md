@@ -57,4 +57,4 @@ A Python script to access http://notepad.cc
     update:  DEF
     $ ./notepad-cc.py -k test_password -p 123456 -a GHI
     current:  DEF
-        update:  DEFGHI
+    update:  DEFGHI
