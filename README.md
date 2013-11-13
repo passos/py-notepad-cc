@@ -35,8 +35,15 @@ A Python script to access http://notepad.cc
     $ ./notepad-cc.py -k ipaddress 
     192.168.1.101 192.168.1.102
 
+## Input through pipeline
+> put the content of ~/.vimrc to http://notepad.cc/passos_vimrc
+
+    $ cat ~/.vimrc | ./notepad-cc.py -k passos_vimrc
+
+
 ## Access page by password
 > update and fetch the page http://notepad.cc/test_password
+
     $ ./notepad-cc.py -k test_password 
     Password:  # input wrong password
     None
