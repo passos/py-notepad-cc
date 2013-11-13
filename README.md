@@ -10,6 +10,8 @@ A Python script to access http://notepad.cc
     Options:
       -h, --help         show this help message and exit
       -k KEY, --key=KEY  http://notepad.cc/KEY
+      -p PASSWORD, --password=PASSWORD
+                         password of the page
       -a, --append       append to current content instead of replace it
       -q, --quite        quite mode, no output
     
@@ -33,4 +35,19 @@ A Python script to access http://notepad.cc
     $ ./notepad-cc.py -k ipaddress 
     192.168.1.101 192.168.1.102
 
-
+## Access page by password
+> update and fetch the page http://notepad.cc/test_password
+    $ ./notepad-cc.py -k test_password 
+    Password:  # input wrong password
+    None
+    $ ./notepad-cc.py -k test_password 
+    Password:  # input right password
+    ABC
+    $ ./notepad-cc.py -k test_password -p 123456
+    ABC
+    $ ./notepad-cc.py -k test_password -p 123456 DEF
+    current:  ABC
+    update:  DEF
+    $ ./notepad-cc.py -k test_password -p 123456 -a GHI
+    current:  DEF
+        update:  DEFGHI
