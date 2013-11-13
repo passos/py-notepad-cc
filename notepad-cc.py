@@ -45,12 +45,19 @@ if __name__ == '__main__':
         parser.print_help()
         sys.exit(0)
 
-    config = NotepadCC(options.key)
+    notepad = NotepadCC(options.key)
+    current_content = notepad.get_note()
 
-    current_content = config.get_note()
-
+    # get input from cmd line or stdin
+    content = None
     if len(args) > 0:
         content = " ".join(args)
+    else:
+        lines = sys.stdin.readlines()
+        if len(lines) > 0:
+            content = "".join(lines)
+
+    if content is not None:
         if options.append:
             content = current_content + content
 
@@ -58,7 +65,7 @@ if __name__ == '__main__':
             print 'current: ', current_content
             print 'update: ', content
 
-        config.set_note(content)
+        notepad.set_note(content)
     else:
         print current_content
 
